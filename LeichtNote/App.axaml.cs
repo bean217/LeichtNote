@@ -1,6 +1,8 @@
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform;
 using LeichtNote.ViewModels;
 using LeichtNote.Views;
 
@@ -17,9 +19,9 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow
+            desktop.MainWindow = new MainWindow //MyView //ViewActivationView
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = new MainWindowViewModel(), //MyViewModel(), //ViewActivationViewModel(),
             };
         }
 
