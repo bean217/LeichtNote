@@ -1,6 +1,6 @@
 <UserControl
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignHeight="900"
+    d:DesignWidth="1600"
     mc:Ignorable="d"
     x:Class="LeichtNote.Views.MainView"
     xmlns="https://github.com/avaloniaui"
@@ -24,15 +24,17 @@
                     <StackPanel.Styles>
                         <Style Selector="Button">
                             <Setter Property="CornerRadius" Value="0" />
-                            <Setter Property="Height" Value="40" />
-                            <Setter Property="MinWidth" Value="80" />
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                            <Setter Property="Height" Value="60" />
+                            <Setter Property="MinWidth" Value="120" />
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                            <Setter Property="VerticalContentAlignment" Value="Bottom" />
                             <Setter Property="FontWeight" Value="Medium" />
+                            <Setter Property="FontSize" Value="16" />
                             <Setter Property="Foreground" Value="Azure" />
                             <Setter Property="BorderThickness" Value="1" />
                             <Setter Property="BorderBrush" Value="#606060" />
                             <Setter Property="Margin" Value="1 0" />
+                            <Setter Property="Padding" Value="8 4" />
                         </Style>
                     </StackPanel.Styles>
                     <Button Background="#5a98a2">
@@ -56,14 +58,14 @@
                 </StackPanel>
                 <Image
                     Grid.Column="2"
-                    Height="40"
+                    Height="80"
                     HorizontalAlignment="Center"
                     Source="../Assets/freiberg_emblem.png"
                     VerticalAlignment="Center" />
             </Grid>
         </Border>
 
-        <TextBlock HorizontalAlignment="Center" Text="Music Option Buttons Panel" />
+        <TextBlock HorizontalAlignment="Center" Text="Music Filter Options Panel" />
 
         <Border
             BorderBrush="black"
@@ -72,7 +74,230 @@
             Padding="5">
 
             <!--  Music Filter Options Panel  -->
+            <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+                <Grid.Styles>
+                    <Style Selector="StackPanel.filter &gt; TextBox, StackPanel.filter &gt; ComboBox">
+                        <Setter Property="Width" Value="150" />
+                    </Style>
+                    <Style Selector="StackPanel.mandant &gt; TextBox, StackPanel.mandant &gt; ComboBox">
+                        <Setter Property="Width" Value="300" />
+                    </Style>
+                    <Style Selector="StackPanel">
+                        <Setter Property="Margin" Value="2" />
+                    </Style>
+                </Grid.Styles>
+
+                <!--  Top Row  -->
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="0"
+                    Grid.Row="0">
+                    <TextBlock Text="Test" />
+                    <TextBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="1"
+                    Grid.Row="0">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="2"
+                    Grid.Row="0">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="3"
+                    Grid.Row="0">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="4"
+                    Grid.Row="0">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="5"
+                    Grid.Row="0">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="6"
+                    Grid.Row="0">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="7"
+                    Grid.Row="0">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+
+                <!--  Bottom Row  -->
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="0"
+                    Grid.Row="1">
+                    <TextBlock Text="Test" />
+                    <TextBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="1"
+                    Grid.Row="1">
+                    <TextBlock Text="Test" />
+                    <TextBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="2"
+                    Grid.Row="1">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="3"
+                    Grid.Row="1">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="4"
+                    Grid.Row="1">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="5"
+                    Grid.Row="1">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="6"
+                    Grid.Row="1">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="7"
+                    Grid.Row="1">
+                    <TextBlock Text="Test" />
+                    <ComboBox />
+                </StackPanel>
+
+                <!--  CheckBoxes  -->
+                <StackPanel Grid.Column="0" Grid.Row="2">
+                    <CheckBox>Potpourri</CheckBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="2">
+                    <CheckBox>Sammelheft</CheckBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="2">
+                    <CheckBox>Ausgeteilt</CheckBox>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Grid.Row="2">
+                    <CheckBox>Verliehen</CheckBox>
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="4"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2">
+                    <CheckBox>Untertitel Durchsuchen</CheckBox>
+                </StackPanel>
+
+                <!--  Search Bar  -->
+                <StackPanel Grid.Column="0" Grid.Row="4">
+                    <Button
+                        BorderBrush="Black"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                        Suche starten
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="4">
+                    <Button
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                        Felder leeren
+                    </Button>
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="4">
+                    <TextBox
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Left"
+                        VerticalContentAlignment="Center"
+                        Watermark="Globaler Suchbegriff" />
+                </StackPanel>
+                <StackPanel
+                    Classes="mandant"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="3"
+                    Grid.RowSpan="2"
+                    HorizontalAlignment="Right">
+                    <TextBlock HorizontalAlignment="Right" Text="Mandant" />
+                    <ComboBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                </StackPanel>
+            </Grid>
 
         </Border>
+
+        <TextBlock HorizontalAlignment="Center" Text="Data Panel" />
+
+        <Border
+            BorderBrush="black"
+            BorderThickness="2"
+            Margin="5"
+            Padding="5">
+
+            <!--  Data Panel  -->
+            <DataGrid
+                BorderBrush="Gray"
+                BorderThickness="2"
+                CanUserReorderColumns="True"
+                CanUserResizeColumns="True"
+                CanUserSortColumns="False"
+                GridLinesVisibility="All"
+                IsReadOnly="True"
+                ItemsSource=""
+                Margin="20">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="" Header="Field 1" />
+                    <DataGridTextColumn Binding="" Header="Field 2" />
+                    <DataGridTextColumn Binding="" Header="Field 3" />
+                    <DataGridTextColumn Binding="" Header="Field 4" />
+                    <DataGridTextColumn Binding="" Header="Field 5" />
+                    <DataGridTextColumn Binding="" Header="Field 6" />
+                    <DataGridTextColumn Binding="" Header="Field 7" />
+                    <DataGridTextColumn Binding="" Header="Field 8" />
+                    <DataGridTextColumn Binding="" Header="Field 9" />
+                    <DataGridTextColumn Binding="" Header="Field 10" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
     </StackPanel>
 </UserControl>

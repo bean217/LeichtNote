@@ -17,20 +17,19 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
         InitializeComponent();
         var screen = Screens.Primary;
         System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tSystem Dims: {screen.Bounds.Width}x{screen.Bounds.Height}px");
-        System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tSystem Scale Factor: {screen.Scaling}");
-
+        System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tPixel Density: {screen.Scaling}");
         // Set window lower bounds dimensions
-        MinHeight = 100;
+        MinHeight = 144;
         MinWidth = MinHeight * AspectRatio;
         // Set window upper bounds dimensions
-        MaxHeight = 720;
-        MaxWidth = MaxHeight * AspectRatio;
+        MaxHeight = screen.WorkingArea.Height;
+        MaxWidth = screen.WorkingArea.Width;
         // Set window default dimensions
         Height = screen.Bounds.Height * DefaultScale / screen.Scaling;
         Width = Height * AspectRatio;
-        
-        System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tApp Dims: {(int)Width}x{(int)Height}px");
 
+        System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tApp Dims: {(int)Width}x{(int)Height}px");
+        
         this.WhenActivated(disposables => { });
         AvaloniaXamlLoader.Load(this);
 

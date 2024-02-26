@@ -1,8 +1,8 @@
 <Window
     Icon="/Assets/avalonia-logo.ico"
     Title="LeichtNote"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
     mc:Ignorable="d"
     x:Class="LeichtNote.Views.MainWindow"
     x:DataType="vm:MainWindowViewModel"
@@ -23,7 +23,7 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <Grid Background="Fuchsia" RowDefinitions="Auto, Auto , *, Auto">
+    <Grid RowDefinitions="Auto, Auto , *, Auto">
         <!--  Menu Bar  -->
         <v:MenuBarView Grid.Row="0" />
 
@@ -45,8 +45,8 @@
         <DockPanel Background="LightGray" Grid.Row="3">
             <TextBlock
                 DockPanel.Dock="Bottom"
-                FontSize="8"
-                Height="10"
+                FontSize="16"
+                Height="20"
                 Text="LeichtNote © Bergmusikkorps Saxonia Freiberg" />
         </DockPanel>
 
