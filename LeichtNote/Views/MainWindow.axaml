@@ -1,5 +1,5 @@
 <Window
-    Icon="/Assets/avalonia-logo.ico"
+    Icon="/Assets/leichtnote-icon.ico"
     Title="LeichtNote"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
