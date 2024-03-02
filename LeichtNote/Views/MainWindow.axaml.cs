@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
@@ -10,11 +11,19 @@ namespace LeichtNote.Views;
 
 public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
 {
+    #region Display Properties
+    
     private static double AspectRatio => 16.0 / 9.0;
     private static double DefaultScale => 0.8;
+    
+    #endregion
+    
     public MainWindow()
     {
+        #region Display Initialization
+        
         InitializeComponent();
+        
         var screen = Screens.Primary;
         System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tSystem Dims: {screen.Bounds.Width}x{screen.Bounds.Height}px");
         System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tPixel Density: {screen.Scaling}");
@@ -30,8 +39,13 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
 
         System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tApp Dims: {(int)Width}x{(int)Height}px");
         
+        #endregion
+        
+        #region Navigation
+        
         this.WhenActivated(disposables => { });
         AvaloniaXamlLoader.Load(this);
-
+        
+        #endregion
     }
 }

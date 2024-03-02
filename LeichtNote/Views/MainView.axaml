@@ -10,6 +10,7 @@
 
     <StackPanel>
 
+
         <TextBlock HorizontalAlignment="Center" Text="Music Option Buttons Panel" />
 
         <Border
@@ -100,7 +101,10 @@
                     Grid.Column="1"
                     Grid.Row="0">
                     <TextBlock Text="Test" />
-                    <ComboBox />
+                    <ComboBox>
+                        <ComboBoxItem>TextItem 1</ComboBoxItem>
+                        <ComboBoxItem>TextItem 2</ComboBoxItem>
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel
                     Classes="filter"

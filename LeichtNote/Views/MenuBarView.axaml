@@ -1,9 +1,11 @@
 <UserControl
     mc:Ignorable="d"
     x:Class="LeichtNote.Views.MenuBarView"
+    x:DataType="vm:MenuBarViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:LeichtNote.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <DockPanel Background="LightGray" Height="20">
@@ -15,7 +17,7 @@
             </Menu.Styles>
             <MenuItem Header="_Beenden" />
             <MenuItem Header="_Instrumentenverwaltung" />
-            <MenuItem Header="_Einstellungen" />
+            <MenuItem Command="{Binding ShowSettingsDialogCommand}" Header="_Einstellungen" />
             <MenuItem Header="_Hilf" />
         </Menu>
     </DockPanel>
