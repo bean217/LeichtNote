@@ -3,6 +3,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
+using LeichtNote.Models;
 using LeichtNote.ViewModels;
 using ReactiveUI;
 
@@ -29,7 +30,7 @@ public partial class MenuBarView : ReactiveUserControl<MenuBarViewModel>
     
     #region Settings Dialog
     
-    private async Task DoShowSettingsDialogAsync(InteractionContext<SettingsWindowViewModel, SettingsInfoViewModel?> context)
+    private async Task DoShowSettingsDialogAsync(InteractionContext<SettingsWindowViewModel, SettingsModel?> context)
     {
         // Get a reference to our TopLevel (the parent window)
         var topLevel = TopLevel.GetTopLevel(this);
@@ -39,7 +40,7 @@ public partial class MenuBarView : ReactiveUserControl<MenuBarViewModel>
             DataContext = context.Input
         };
 
-        var result = await dialog.ShowDialog<SettingsInfoViewModel?>((Window)topLevel!);
+        var result = await dialog.ShowDialog<SettingsModel?>((Window)topLevel!);
         context.SetOutput(result);
     }
     

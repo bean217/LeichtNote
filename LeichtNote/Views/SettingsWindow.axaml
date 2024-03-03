@@ -18,25 +18,43 @@
     xmlns:vm="using:LeichtNote.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <TabControl TabStripPlacement="Left">
-        <TabItem Header="Persönliche Angeben">
-            <v:PersoenlicheAngebenView Background="LightGray" DataContext="{Binding PersoenlicheAngebenViewModel}" />
-        </TabItem>
-        <TabItem Header="Schwierigkeitsgrade">
-            <v:SchwierigkeitsgradeView Background="LightGray" DataContext="{Binding SchwierigkeitsgradeViewModel}" />
-        </TabItem>
-        <TabItem Header="Freifelder">
-            <v:FreifelderView Background="LightGray" DataContext="{Binding FreifelderViewModel}" />
-        </TabItem>
-        <TabItem Header="Lager">
-            <v:LagerView Background="LightGray" DataContext="{Binding LagerViewModel}" />
-        </TabItem>
-        <TabItem Header="Spaltenansicht">
-            <v:SpaltenansichtView Background="LightGray" DataContext="{Binding SpaltenansichtViewModel}" />
-        </TabItem>
-        <TabItem Header="Datenimport">
-            <v:DatenimportView Background="LightGray" DataContext="{Binding DatenimportViewModel}" />
-        </TabItem>
-    </TabControl>
+    <Grid RowDefinitions="*,Auto">
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="Persönliche Angeben">
+                <v:PersoenlicheAngebenView Background="LightGray" DataContext="{Binding PersoenlicheAngebenViewModel}" />
+            </TabItem>
+            <TabItem Header="Schwierigkeitsgrade">
+                <v:SchwierigkeitsgradeView Background="LightGray" DataContext="{Binding SchwierigkeitsgradeViewModel}" />
+            </TabItem>
+            <TabItem Header="Freifelder">
+                <v:FreifelderView Background="LightGray" DataContext="{Binding FreifelderViewModel}" />
+            </TabItem>
+            <TabItem Header="Lager">
+                <v:LagerView Background="LightGray" DataContext="{Binding LagerViewModel}" />
+            </TabItem>
+            <TabItem Header="Spaltenansicht">
+                <v:SpaltenansichtView Background="LightGray" DataContext="{Binding SpaltenansichtViewModel}" />
+            </TabItem>
+            <TabItem Header="Datenimport">
+                <v:DatenimportView Background="LightGray" DataContext="{Binding DatenimportViewModel}" />
+            </TabItem>
+        </TabControl>
+
+        <StackPanel
+            FlowDirection="RightToLeft"
+            Grid.Row="1"
+            Orientation="Horizontal">
+            <StackPanel.Styles>
+                <Style Selector="Button">
+                    <Setter Property="Margin" Value="30,10,0,10" />
+                    <Setter Property="Width" Value="150" />
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </StackPanel.Styles>
+            <Button Command="{Binding CloseSettingsCommand}" Content="Close" />
+            <Button Command="{Binding SaveAndCloseSettingsCommand}" Content="Save &amp; Close" />
+        </StackPanel>
+    </Grid>
 
 </Window>
