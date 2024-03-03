@@ -1,13 +1,42 @@
 <Window
-    Title="SettingsWindow"
+    CanResize="False"
+    Height="800"
+    MaxHeight="800"
+    MaxWidth="1280"
+    Title="LeichtNote - Einstellungen"
+    Width="1280"
     WindowStartupLocation="CenterOwner"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignHeight="900"
+    d:DesignWidth="1600"
     mc:Ignorable="d"
     x:Class="LeichtNote.Views.SettingsWindow"
+    x:DataType="vm:SettingsWindowViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:v="using:LeichtNote.Views.SettingsViews"
+    xmlns:vm="using:LeichtNote.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    Welcome to Avalonia!
+
+    <TabControl TabStripPlacement="Left">
+        <TabItem Header="Persönliche Angeben">
+            <v:PersoenlicheAngebenView Background="LightGray" DataContext="{Binding PersoenlicheAngebenViewModel}" />
+        </TabItem>
+        <TabItem Header="Schwierigkeitsgrade">
+            <v:SchwierigkeitsgradeView Background="LightGray" DataContext="{Binding SchwierigkeitsgradeViewModel}" />
+        </TabItem>
+        <TabItem Header="Freifelder">
+            <v:FreifelderView Background="LightGray" DataContext="{Binding FreifelderViewModel}" />
+        </TabItem>
+        <TabItem Header="Lager">
+            <v:LagerView Background="LightGray" DataContext="{Binding LagerViewModel}" />
+        </TabItem>
+        <TabItem Header="Spaltenansicht">
+            <v:SpaltenansichtView Background="LightGray" DataContext="{Binding SpaltenansichtViewModel}" />
+        </TabItem>
+        <TabItem Header="Datenimport">
+            <v:DatenimportView Background="LightGray" DataContext="{Binding DatenimportViewModel}" />
+        </TabItem>
+    </TabControl>
+
 </Window>

@@ -41,14 +41,8 @@
                     <Button Background="#5a98a2">
                         Neu
                     </Button>
-                    <Button Background="#696969">
-                        Export
-                    </Button>
                     <Button Background="#dda215">
-                        Musikfolge
-                    </Button>
-                    <Button Background="#857a00">
-                        Ausliehen
+                        Export
                     </Button>
                     <Button Background="#8f4811">
                         Einzelstimmen
@@ -75,7 +69,7 @@
             Padding="5">
 
             <!--  Music Filter Options Panel  -->
-            <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+            <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
                 <Grid.Styles>
                     <Style Selector="StackPanel.filter &gt; TextBox, StackPanel.filter &gt; ComboBox">
                         <Setter Property="Width" Value="150" />
@@ -93,14 +87,14 @@
                     Classes="filter"
                     Grid.Column="0"
                     Grid.Row="0">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Titel" />
                     <TextBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="1"
                     Grid.Row="0">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Komponist" />
                     <ComboBox>
                         <ComboBoxItem>TextItem 1</ComboBoxItem>
                         <ComboBoxItem>TextItem 2</ComboBoxItem>
@@ -110,42 +104,49 @@
                     Classes="filter"
                     Grid.Column="2"
                     Grid.Row="0">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Arrangeur" />
                     <ComboBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="3"
                     Grid.Row="0">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Schwierigkeitsgrad" />
                     <ComboBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="4"
                     Grid.Row="0">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Freifeld 1" />
                     <ComboBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="5"
                     Grid.Row="0">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Freifeld 2" />
                     <ComboBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="6"
                     Grid.Row="0">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Freifeld 3" />
                     <ComboBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="7"
                     Grid.Row="0">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Freifeld 4" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="8"
+                    Grid.Row="0">
+                    <TextBlock Text="Freifeld 5" />
                     <ComboBox />
                 </StackPanel>
 
@@ -154,56 +155,63 @@
                     Classes="filter"
                     Grid.Column="0"
                     Grid.Row="1">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Inventarnummer" />
                     <TextBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="1"
                     Grid.Row="1">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Erscheinungsjahr" />
                     <TextBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="2"
                     Grid.Row="1">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Textautor" />
                     <ComboBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="3"
                     Grid.Row="1">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Soloinstrument" />
                     <ComboBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="4"
                     Grid.Row="1">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Verlag" />
                     <ComboBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="5"
                     Grid.Row="1">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Besetzung" />
                     <ComboBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="6"
                     Grid.Row="1">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Lagerplatz 1" />
                     <ComboBox />
                 </StackPanel>
                 <StackPanel
                     Classes="filter"
                     Grid.Column="7"
                     Grid.Row="1">
-                    <TextBlock Text="Test" />
+                    <TextBlock Text="Lagerplatz 2" />
+                    <ComboBox />
+                </StackPanel>
+                <StackPanel
+                    Classes="filter"
+                    Grid.Column="8"
+                    Grid.Row="1">
+                    <TextBlock Text="Lagerplatz 3" />
                     <ComboBox />
                 </StackPanel>
 
@@ -257,7 +265,7 @@
                 </StackPanel>
                 <StackPanel
                     Classes="mandant"
-                    Grid.Column="4"
+                    Grid.Column="5"
                     Grid.ColumnSpan="5"
                     Grid.Row="3"
                     Grid.RowSpan="2"

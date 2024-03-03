@@ -18,7 +18,7 @@
             <MenuItem Header="_Beenden" />
             <MenuItem Header="_Instrumentenverwaltung" />
             <MenuItem Command="{Binding ShowSettingsDialogCommand}" Header="_Einstellungen" />
-            <MenuItem Header="_Hilf" />
+            <MenuItem Header="_Hilfe" />
         </Menu>
     </DockPanel>
 

@@ -1,0 +1,127 @@
+<UserControl
+    d:DesignHeight="900"
+    d:DesignWidth="1600"
+    mc:Ignorable="d"
+    x:Class="LeichtNote.Views.SettingsViews.FreifelderView"
+    x:DataType="vm:FreifelderViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:LeichtNote.ViewModels.SettingsViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="100,0" VerticalAlignment="Center">
+        <Border
+            Background="White"
+            BorderBrush="Black"
+            BorderThickness="1">
+
+            <Grid
+                ColumnDefinitions="*,7*,*"
+                Margin="50"
+                RowDefinitions="*,2*">
+
+                <!--  Header Text  -->
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Margin="0,0,0,25"
+                    Text="{Binding Label}"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Center" />
+
+                <!--  Data Input  -->
+                <StackPanel
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="0,25"
+                    VerticalAlignment="Center">
+
+                    <StackPanel.Styles>
+                        <Style Selector="StackPanel &gt; Grid &gt; TextBlock, StackPanel &gt; Grid &gt; CheckBox">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                        <Style Selector="StackPanel.freifelder-head">
+                            <Setter Property="Margin" Value="5" />
+                        </Style>
+                        <Style Selector="StackPanel.freifelder-container">
+                            <Setter Property="Margin" Value="10" />
+                        </Style>
+                    </StackPanel.Styles>
+
+                    <StackPanel Classes="freifelder-head">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
+                            <TextBlock
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                Text="Bezeichnung" />
+                            <TextBlock
+                                Grid.Column="2"
+                                Grid.Row="0"
+                                Text="Verwenden" />
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Classes="freifelder-container">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
+                            <TextBlock
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Text="Felder 1" />
+                            <TextBox Grid.Column="1" Grid.Row="0" />
+                            <CheckBox Grid.Column="2" Grid.Row="0" />
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Classes="freifelder-container">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
+                            <TextBlock
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Text="Felder 2" />
+                            <TextBox Grid.Column="1" Grid.Row="0" />
+                            <CheckBox Grid.Column="2" Grid.Row="0" />
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Classes="freifelder-container">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
+                            <TextBlock
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Text="Felder 3" />
+                            <TextBox Grid.Column="1" Grid.Row="0" />
+                            <CheckBox Grid.Column="2" Grid.Row="0" />
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Classes="freifelder-container">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
+                            <TextBlock
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Text="Felder 4" />
+                            <TextBox Grid.Column="1" Grid.Row="0" />
+                            <CheckBox Grid.Column="2" Grid.Row="0" />
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Classes="freifelder-container">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
+                            <TextBlock
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Text="Felder 5" />
+                            <TextBox Grid.Column="1" Grid.Row="0" />
+                            <CheckBox Grid.Column="2" Grid.Row="0" />
+                        </Grid>
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+
+        </Border>
+    </StackPanel>
+
+</UserControl>
