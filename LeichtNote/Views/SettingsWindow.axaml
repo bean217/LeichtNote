@@ -52,8 +52,8 @@
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
                 </Style>
             </StackPanel.Styles>
-            <Button Command="{Binding CloseSettingsCommand}" Content="Close" />
-            <Button Command="{Binding SaveAndCloseSettingsCommand}" Content="Save &amp; Close" />
+            <Button Command="{Binding SaveAndCloseSettingsCommand}" Content="Speichern" />
+            <Button Command="{Binding CloseSettingsCommand}" Content="Abbrechen" />
         </StackPanel>
     </Grid>
 
