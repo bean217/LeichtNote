@@ -25,7 +25,7 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
         InitializeComponent();
         
         var screen = Screens.Primary;
-        System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tSystem Dims: {screen.Bounds.Width}x{screen.Bounds.Height}px");
+        System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tSystem Dims: {screen!.Bounds.Width}x{screen.Bounds.Height}px");
         System.Console.WriteLine($"Views/MainWindow.axaml.cs:MainWindow()\tPixel Density: {screen.Scaling}");
         // Set window lower bounds dimensions
         MinHeight = 144;

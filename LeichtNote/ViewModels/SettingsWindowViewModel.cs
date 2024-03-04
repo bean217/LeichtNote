@@ -1,4 +1,4 @@
-using System;
+
 using System.Reactive;
 using LeichtNote.Models;
 using LeichtNote.ViewModels.SettingsViewModels;
@@ -9,7 +9,7 @@ namespace LeichtNote.ViewModels;
 public class SettingsWindowViewModel : ViewModelBase
 {
     #region Settings Properties
-
+    
     private SettingsModel SettingsModel { get; }
     
     #endregion
@@ -38,12 +38,12 @@ public class SettingsWindowViewModel : ViewModelBase
 
         SettingsModel = new SettingsModel();
 
-        PersoenlicheAngebenViewModel = new PersoenlicheAngebenViewModel();
-        SchwierigkeitsgradeViewModel = new SchwierigkeitsgradeViewModel();
-        FreifelderViewModel = new FreifelderViewModel();
-        LagerViewModel = new LagerViewModel();
-        SpaltenansichtViewModel = new SpaltenansichtViewModel();
-        DatenimportViewModel = new DatenimportViewModel();
+        PersoenlicheAngebenViewModel = new PersoenlicheAngebenViewModel(SettingsModel);
+        SchwierigkeitsgradeViewModel = new SchwierigkeitsgradeViewModel(SettingsModel);
+        FreifelderViewModel = new FreifelderViewModel(SettingsModel);
+        LagerViewModel = new LagerViewModel(SettingsModel);
+        SpaltenansichtViewModel = new SpaltenansichtViewModel(SettingsModel);
+        DatenimportViewModel = new DatenimportViewModel(SettingsModel);
 
         #endregion
 

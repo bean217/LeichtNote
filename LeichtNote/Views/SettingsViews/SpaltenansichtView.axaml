@@ -3,9 +3,68 @@
     d:DesignWidth="800"
     mc:Ignorable="d"
     x:Class="LeichtNote.Views.SettingsViews.SpaltenansichtView"
+    x:DataType="vm:SpaltenansichtViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:LeichtNote.ViewModels.SettingsViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    SpaltenansichtView
+
+    <Grid Background="LightGray" RowDefinitions="*">
+        <Border
+            Background="White"
+            BorderBrush="Black"
+            BorderThickness="1"
+            Grid.Row="0"
+            Margin="100"
+            VerticalAlignment="Center">
+            <StackPanel>
+                <!--  Header  -->
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Spaltendarstellung im Hauptfester" />
+                    <TextBlock Text="Wählen Sie die Spalten aus die Sie im Hauptfenster einblenden möchen." TextWrapping="Wrap" />
+                </StackPanel>
+
+                <!--  Spaltenansicht  -->
+                <StackPanel Margin="10" Orientation="Vertical">
+                    <ItemsRepeater ItemsSource="{Binding SettingsModel.SpaltenansichtModel.Spalten}">
+                        <ItemsRepeater.Layout>
+                            <WrapLayout Orientation="Horizontal" />
+                        </ItemsRepeater.Layout>
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="1">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel.Styles>
+                                            <Style Selector="CheckBox, TextBlock">
+                                                <Setter Property="Margin" Value="0,0,20,0" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                            </Style>
+                                        </StackPanel.Styles>
+
+                                        <CheckBox IsChecked="{Binding Enabled}" />
+                                        <TextBlock Text="{Binding Name}" />
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
+                </StackPanel>
+
+                <!--  Alles auswählen  -->
+                <StackPanel
+                    FlowDirection="RightToLeft"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center">
+                    <Label
+                        Content="Alles Auswählen/abwählen"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
+                    <CheckBox />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+
 </UserControl>
