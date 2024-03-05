@@ -1,5 +1,7 @@
-
+using System;
+using System.Reactive.Linq;
 using System.Reactive;
+using System.Threading.Tasks;
 using LeichtNote.Models;
 using LeichtNote.ViewModels.SettingsViewModels;
 using ReactiveUI;
@@ -50,9 +52,9 @@ public class SettingsWindowViewModel : ViewModelBase
         #region Settings Commands
 
         CloseSettingsCommand = ReactiveCommand.Create(() => default(SettingsModel));
-        SaveAndCloseSettingsCommand = ReactiveCommand.Create(() =>
+        SaveAndCloseSettingsCommand = ReactiveCommand.CreateFromTask(async () =>
         {
-            SettingsModel.Save();
+            await SettingsModel.SaveAsync();
             return SettingsModel;
         });
 
