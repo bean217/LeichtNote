@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 using LeichtNote.Models.SettingsModels;
+using LeichtNote.Models.SettingsModels.SchwierigkeitsgradeModels;
 using LeichtNote.Models.SettingsModels.SpaltenansichtModels;
 using ReactiveUI;
 
@@ -14,13 +16,41 @@ namespace LeichtNote.Models;
 /// </summary>
 public class SettingsModel : ReactiveObject
 {
+    #region Settings Data Storage Properties
+
+    
     private static string ConfigPath => "./config/";
     private static string FileName => "settings.json";
-    public SpaltenansichtModel SpaltenansichtModel { get; set; }
+
+    #endregion
+
+    #region Settings Data
+    
+    public IEnumerable<SpalteModel> Spalten { get; set; }
+    public IEnumerable<SchwierigkeitsgradModel> Schwierigkeitsgrade { get; set; }
+
+    #endregion
 
     public SettingsModel()
     {
-        SpaltenansichtModel = new SpaltenansichtModel();
+        #region Settings Data
+        
+        Spalten = new List<SpalteModel>()
+        {
+            new SpalteModel { Name = "Test 1", Enabled = true },
+            new SpalteModel { Name = "Test 2", Enabled = false },
+        };
+
+        Schwierigkeitsgrade = new List<SchwierigkeitsgradModel>()
+        {
+            new SchwierigkeitsgradModel { Grad = 1, Bescreibung = "Anfänger"},
+            new SchwierigkeitsgradModel { Grad = 2, Bescreibung = "Leicht"},
+            new SchwierigkeitsgradModel { Grad = 3, Bescreibung = "Mittel"},
+            new SchwierigkeitsgradModel { Grad = 4, Bescreibung = "Schwer"},
+            new SchwierigkeitsgradModel { Grad = 5, Bescreibung = "Sehr schwer"}
+        };
+
+        #endregion
     }
 
     #region Save Settings Tasks

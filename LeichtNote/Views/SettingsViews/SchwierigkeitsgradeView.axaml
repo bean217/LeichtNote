@@ -3,9 +3,66 @@
     d:DesignWidth="800"
     mc:Ignorable="d"
     x:Class="LeichtNote.Views.SettingsViews.SchwierigkeitsgradeView"
+    x:DataType="vm:SchwierigkeitsgradeViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:LeichtNote.ViewModels.SettingsViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    SchwierigkeitsgradeView
+
+    <StackPanel
+        Margin="100,0"
+        Orientation="Vertical"
+        VerticalAlignment="Center">
+        <Border
+            Background="White"
+            BorderBrush="Black"
+            BorderThickness="1">
+
+            <Grid
+                ColumnDefinitions="*"
+                Margin="50"
+                RowDefinitions="Auto,*">
+
+                <!--  Header Text  -->
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Margin="0,0,0,25"
+                    Text="Schwierigkeitsgrade"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Center" />
+
+                <!--  Data Input  -->
+                <StackPanel Grid.Column="0" Grid.Row="1">
+
+                    <DataGrid
+                        AutoGenerateColumns="False"
+                        BorderBrush="Black"
+                        BorderThickness="2"
+                        GridLinesVisibility="All"
+                        Height="300"
+                        IsReadOnly="False"
+                        ItemsSource="{Binding SettingsModel.Schwierigkeitsgrade}"
+                        MaxHeight="500">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn IsReadOnly="True" />
+                            <DataGridTextColumn
+                                Binding="{Binding Grad}"
+                                Header="Grad"
+                                Width="*" />
+                            <DataGridTextColumn
+                                Binding="{Binding Bescreibung}"
+                                Header="Beschreibung"
+                                Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
+    </StackPanel>
+
 </UserControl>

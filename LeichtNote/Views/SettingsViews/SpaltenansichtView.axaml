@@ -27,7 +27,7 @@
 
                 <!--  Spaltenansicht  -->
                 <StackPanel Margin="10" Orientation="Vertical">
-                    <ItemsRepeater ItemsSource="{Binding SettingsModel.SpaltenansichtModel.Spalten}">
+                    <ItemsRepeater ItemsSource="{Binding SettingsModel.Spalten}">
                         <ItemsRepeater.Layout>
                             <WrapLayout Orientation="Horizontal" />
                         </ItemsRepeater.Layout>

@@ -1,15 +1,31 @@
-using System;
-using System.Collections.ObjectModel;
+using System.ComponentModel;
 using LeichtNote.Models;
-using LeichtNote.Models.SettingsModels.SpaltenansichtModels;
 
 namespace LeichtNote.ViewModels.SettingsViewModels;
 
-public class SpaltenansichtViewModel : ViewModelBase
+public class SpaltenansichtViewModel : ViewModelBase, INotifyPropertyChanged
 {
-    public SettingsModel SettingsModel { get; }
+    private SettingsModel _settingsModel { get; set; }
+    public SettingsModel SettingsModel
+    {
+        get { return _settingsModel; }
+        set
+        {
+            _settingsModel = value;
+            OnPropertyChanged(nameof(SettingsModel));
+        }
+    }
+    
+    
     public SpaltenansichtViewModel(SettingsModel settingsModel)
     {
-        SettingsModel = settingsModel;
+        _settingsModel = settingsModel;
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
