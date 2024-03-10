@@ -5,14 +5,18 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
 using Avalonia.Controls;
+using DynamicData;
 using LeichtNote.Models;
 using LeichtNote.Models.SettingsModels.SchwierigkeitsgradeModels;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ReactiveUI;
 
 namespace LeichtNote.ViewModels.SettingsViewModels;
 
 public class SchwierigkeitsgradeViewModel : INotifyPropertyChanged
 {
+    public string? Footer => "Zum Bearbeiten \"Doppelklick\"";
+    
     public SettingsModel SettingsModel { get; set; }    //TODO: May need to implement OnPropertyChanged here as well
 
     // TODO: DataGridView is broken for ObservableCollection, so implement INotifyPropertyChanged instead
@@ -25,8 +29,10 @@ public class SchwierigkeitsgradeViewModel : INotifyPropertyChanged
         }
         set
         {
-            // set view collection
-            _viewSchwierigkeiten = value;
+            // set view collection (sorted by ascending Grad values)
+            // var last = value.Last();
+            // _viewSchwierigkeiten = value.Where((x, i) => i != value.Count()-1).OrderBy(x => x.Grad).Append(last);
+            _viewSchwierigkeiten = SortSchwierigkeiten(value);
             // modify actual data
             SettingsModel.Schwierigkeitsgrade = _viewSchwierigkeiten.Where(x => x.IsValid());
             OnPropertyChanged(nameof(Schwierigkeiten));
@@ -50,7 +56,7 @@ public class SchwierigkeitsgradeViewModel : INotifyPropertyChanged
         if (e.Row is { } row)
         {
             // if modified row becomes empty and is not the last row, then remove it from _viewSchwierigkeiten
-            int index = row.GetIndex();
+            int index = _viewSchwierigkeiten.IndexOf((SchwierigkeitsgradModel)row.DataContext!); //row.GetIndex();
             // the modified row is not the last row
             if (index != _viewSchwierigkeiten.Count() - 1)
             {
@@ -59,6 +65,11 @@ public class SchwierigkeitsgradeViewModel : INotifyPropertyChanged
                 {
                     var newVals = _viewSchwierigkeiten.Where((val, ind) => ind != index);
                     Schwierigkeiten = newVals;
+                }
+                // re-sort the schwierigkeiten in case Grad was changed
+                else
+                {
+                    Schwierigkeiten = _viewSchwierigkeiten.ToList();
                 }
             }
             // the modified row is the last row
@@ -76,6 +87,7 @@ public class SchwierigkeitsgradeViewModel : INotifyPropertyChanged
                 }
             }
         }
+        // sort the schwierigkeiten in the event values were changed
     }
 
     public void HandleCellEditEnding(DataGridCellEditEndingEventArgs e)
@@ -92,7 +104,7 @@ public class SchwierigkeitsgradeViewModel : INotifyPropertyChanged
                 // if the input value already exists as a grad, then increment it to a unique value
                 float gradVal;
                 while (float.TryParse(cellContent.Text, out gradVal) && _viewSchwierigkeiten
-                           .Where((x, i) => i != e.Row.GetIndex())      // filter out current row
+                           .Where((x, i) => i != _viewSchwierigkeiten.IndexOf(data))      // filter out current row      e.Row.GetIndex()
                            .Any(x =>                                       // duplicate check
                                 {
                                     return x.Grad != null && Equals(x.Grad, gradVal);
@@ -104,6 +116,13 @@ public class SchwierigkeitsgradeViewModel : INotifyPropertyChanged
         }
     }
 
+    private static IEnumerable<SchwierigkeitsgradModel> SortSchwierigkeiten(IEnumerable<SchwierigkeitsgradModel> schwierigkeiten)
+    {
+        var schwierigkeitsgradModels = schwierigkeiten.ToList();
+        var last = schwierigkeitsgradModels.Last();
+        return schwierigkeitsgradModels.Where((x, i) => i != schwierigkeitsgradModels.Count()-1).OrderBy(x => x.Grad).Append(last);
+    }
+    
     #region INotifyPropertyChanged Implementation
 
     public event PropertyChangedEventHandler PropertyChanged;

@@ -22,7 +22,7 @@
             <Grid
                 ColumnDefinitions="*"
                 Margin="50"
-                RowDefinitions="Auto,*">
+                RowDefinitions="Auto,*,Auto">
 
                 <!--  Header Text  -->
                 <TextBlock
@@ -39,6 +39,7 @@
                     <DataGrid
                         BorderBrush="Black"
                         BorderThickness="2"
+                        CanUserSortColumns="False"
                         CellEditEnded="DataGrid_OnCellEditEnded"
                         CellEditEnding="DataGrid_OnCellEditEnding"
                         GridLinesVisibility="All"
@@ -62,6 +63,15 @@
                     </DataGrid>
 
                 </StackPanel>
+
+                <!--  Footer Text  -->
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Margin="0,25,0,0"
+                    Text="{Binding Footer}"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Center" />
 
             </Grid>
 
