@@ -63,60 +63,89 @@
                         </Grid>
                     </StackPanel>
 
-                    <StackPanel Classes="freifelder-container">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
-                            <TextBlock
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                Text="Felder 1" />
-                            <TextBox Grid.Column="1" Grid.Row="0" />
-                            <CheckBox Grid.Column="2" Grid.Row="0" />
-                        </Grid>
-                    </StackPanel>
+                    <ItemsRepeater ItemsSource="{Binding Freifelder}">
+                        <!-- <ItemsRepeater.Layout> -->
+                        <!--     <WrapLayout Orientation="Vertical" /> -->
+                        <!-- </ItemsRepeater.Layout> -->
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Classes="freifelder-container">
+                                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
+                                        <TextBlock
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            Text="{Binding Key}" />
+                                        <TextBox
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Text="{Binding Value.Name}" />
+                                        <CheckBox
+                                            Grid.Column="2"
+                                            Grid.Row="0"
+                                            IsChecked="{Binding Value.Enabled}" />
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
 
-                    <StackPanel Classes="freifelder-container">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
-                            <TextBlock
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                Text="Felder 2" />
-                            <TextBox Grid.Column="1" Grid.Row="0" />
-                            <CheckBox Grid.Column="2" Grid.Row="0" />
-                        </Grid>
-                    </StackPanel>
 
-                    <StackPanel Classes="freifelder-container">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
-                            <TextBlock
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                Text="Felder 3" />
-                            <TextBox Grid.Column="1" Grid.Row="0" />
-                            <CheckBox Grid.Column="2" Grid.Row="0" />
-                        </Grid>
-                    </StackPanel>
 
-                    <StackPanel Classes="freifelder-container">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
-                            <TextBlock
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                Text="Felder 4" />
-                            <TextBox Grid.Column="1" Grid.Row="0" />
-                            <CheckBox Grid.Column="2" Grid.Row="0" />
-                        </Grid>
-                    </StackPanel>
 
-                    <StackPanel Classes="freifelder-container">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
-                            <TextBlock
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                Text="Felder 5" />
-                            <TextBox Grid.Column="1" Grid.Row="0" />
-                            <CheckBox Grid.Column="2" Grid.Row="0" />
-                        </Grid>
-                    </StackPanel>
+                    <!-- <StackPanel Classes="freifelder-container"> -->
+                    <!--     <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto"> -->
+                    <!--  <TextBlock  -->
+                    <!--  Grid.Column="0"  -->
+                    <!--  Grid.Row="0"  -->
+                    <!--  Text="Felder 1" />  -->
+                    <!--         <TextBox Grid.Column="1" Grid.Row="0" /> -->
+                    <!--         <CheckBox Grid.Column="2" Grid.Row="0" /> -->
+                    <!--     </Grid> -->
+                    <!-- </StackPanel> -->
+                    <!--    -->
+                    <!-- <StackPanel Classes="freifelder-container"> -->
+                    <!--     <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto"> -->
+                    <!--  <TextBlock  -->
+                    <!--  Grid.Column="0"  -->
+                    <!--  Grid.Row="0"  -->
+                    <!--  Text="Felder 2" />  -->
+                    <!--         <TextBox Grid.Column="1" Grid.Row="0" /> -->
+                    <!--         <CheckBox Grid.Column="2" Grid.Row="0" /> -->
+                    <!--     </Grid> -->
+                    <!-- </StackPanel> -->
+                    <!--    -->
+                    <!-- <StackPanel Classes="freifelder-container"> -->
+                    <!--     <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto"> -->
+                    <!--  <TextBlock  -->
+                    <!--  Grid.Column="0"  -->
+                    <!--  Grid.Row="0"  -->
+                    <!--  Text="Felder 3" />  -->
+                    <!--         <TextBox Grid.Column="1" Grid.Row="0" /> -->
+                    <!--         <CheckBox Grid.Column="2" Grid.Row="0" /> -->
+                    <!--     </Grid> -->
+                    <!-- </StackPanel> -->
+                    <!--    -->
+                    <!-- <StackPanel Classes="freifelder-container"> -->
+                    <!--     <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto"> -->
+                    <!--  <TextBlock  -->
+                    <!--  Grid.Column="0"  -->
+                    <!--  Grid.Row="0"  -->
+                    <!--  Text="Felder 4" />  -->
+                    <!--         <TextBox Grid.Column="1" Grid.Row="0" /> -->
+                    <!--         <CheckBox Grid.Column="2" Grid.Row="0" /> -->
+                    <!--     </Grid> -->
+                    <!-- </StackPanel> -->
+                    <!--    -->
+                    <!-- <StackPanel Classes="freifelder-container"> -->
+                    <!--     <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto"> -->
+                    <!--  <TextBlock  -->
+                    <!--  Grid.Column="0"  -->
+                    <!--  Grid.Row="0"  -->
+                    <!--  Text="Felder 5" />  -->
+                    <!--         <TextBox Grid.Column="1" Grid.Row="0" /> -->
+                    <!--         <CheckBox Grid.Column="2" Grid.Row="0" /> -->
+                    <!--     </Grid> -->
+                    <!-- </StackPanel> -->
 
                 </StackPanel>
             </Grid>
