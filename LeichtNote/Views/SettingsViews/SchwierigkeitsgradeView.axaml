@@ -47,7 +47,7 @@
                         ItemsSource="{Binding Schwierigkeiten}"
                         MaxHeight="500">
                         <DataGrid.Columns>
-                            <DataGridTextColumn IsReadOnly="True" />
+                            <!-- <DataGridTextColumn IsReadOnly="True" /> -->
                             <DataGridTextColumn
                                 Binding="{Binding Grad}"
                                 Header="Grad"

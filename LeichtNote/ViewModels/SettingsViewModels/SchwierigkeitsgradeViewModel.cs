@@ -13,7 +13,7 @@ namespace LeichtNote.ViewModels.SettingsViewModels;
 
 public class SchwierigkeitsgradeViewModel : INotifyPropertyChanged
 {
-    public SettingsModel SettingsModel { get; set; }
+    public SettingsModel SettingsModel { get; set; }    //TODO: May need to implement OnPropertyChanged here as well
 
     // TODO: DataGridView is broken for ObservableCollection, so implement INotifyPropertyChanged instead
     private IEnumerable<SchwierigkeitsgradModel> _viewSchwierigkeiten { get; set; }
@@ -91,10 +91,12 @@ public class SchwierigkeitsgradeViewModel : INotifyPropertyChanged
             {
                 // if the input value already exists as a grad, then increment it to a unique value
                 float gradVal;
-                while (float.TryParse(cellContent.Text, out gradVal) && _viewSchwierigkeiten.Any(x =>
-                    {
-                        return x.Grad != null && Equals(x.Grad, gradVal);
-                    }))
+                while (float.TryParse(cellContent.Text, out gradVal) && _viewSchwierigkeiten
+                           .Where((x, i) => i != e.Row.GetIndex())      // filter out current row
+                           .Any(x =>                                       // duplicate check
+                                {
+                                    return x.Grad != null && Equals(x.Grad, gradVal);
+                                }))
                 {
                     cellContent.Text = $"{gradVal + 0.1}";
                 }
