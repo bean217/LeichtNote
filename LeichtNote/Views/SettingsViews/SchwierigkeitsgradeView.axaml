@@ -37,23 +37,26 @@
                 <StackPanel Grid.Column="0" Grid.Row="1">
 
                     <DataGrid
-                        AutoGenerateColumns="False"
                         BorderBrush="Black"
                         BorderThickness="2"
+                        CellEditEnded="DataGrid_OnCellEditEnded"
+                        CellEditEnding="DataGrid_OnCellEditEnding"
                         GridLinesVisibility="All"
                         Height="300"
                         IsReadOnly="False"
-                        ItemsSource="{Binding SettingsModel.Schwierigkeitsgrade}"
+                        ItemsSource="{Binding Schwierigkeiten}"
                         MaxHeight="500">
                         <DataGrid.Columns>
                             <DataGridTextColumn IsReadOnly="True" />
                             <DataGridTextColumn
                                 Binding="{Binding Grad}"
                                 Header="Grad"
+                                IsReadOnly="False"
                                 Width="*" />
                             <DataGridTextColumn
-                                Binding="{Binding Bescreibung}"
+                                Binding="{Binding Beschreibung}"
                                 Header="Beschreibung"
+                                IsReadOnly="False"
                                 Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>

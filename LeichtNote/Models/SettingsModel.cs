@@ -43,11 +43,11 @@ public class SettingsModel : ReactiveObject
 
         Schwierigkeitsgrade = new List<SchwierigkeitsgradModel>()
         {
-            new SchwierigkeitsgradModel { Grad = 1, Bescreibung = "Anfänger"},
-            new SchwierigkeitsgradModel { Grad = 2, Bescreibung = "Leicht"},
-            new SchwierigkeitsgradModel { Grad = 3, Bescreibung = "Mittel"},
-            new SchwierigkeitsgradModel { Grad = 4, Bescreibung = "Schwer"},
-            new SchwierigkeitsgradModel { Grad = 5, Bescreibung = "Sehr schwer"}
+            new SchwierigkeitsgradModel { Grad = 1, Beschreibung = "Anfänger"},
+            new SchwierigkeitsgradModel { Grad = 2, Beschreibung = "Leicht"},
+            new SchwierigkeitsgradModel { Grad = 3, Beschreibung = "Mittel"},
+            new SchwierigkeitsgradModel { Grad = 4, Beschreibung = "Schwer"},
+            new SchwierigkeitsgradModel { Grad = 5, Beschreibung = "Sehr schwer"}
         };
 
         #endregion
