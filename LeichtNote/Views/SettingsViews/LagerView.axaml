@@ -63,38 +63,28 @@
                         </Grid>
                     </StackPanel>
 
-                    <StackPanel Classes="lager-container">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
-                            <TextBlock
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                Text="Lagerplatz 1" />
-                            <TextBox Grid.Column="1" Grid.Row="0" />
-                            <CheckBox Grid.Column="2" Grid.Row="0" />
-                        </Grid>
-                    </StackPanel>
-
-                    <StackPanel Classes="lager-container">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
-                            <TextBlock
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                Text="Lagerplatz 2" />
-                            <TextBox Grid.Column="1" Grid.Row="0" />
-                            <CheckBox Grid.Column="2" Grid.Row="0" />
-                        </Grid>
-                    </StackPanel>
-
-                    <StackPanel Classes="lager-container">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
-                            <TextBlock
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                Text="Lagerplatz 3" />
-                            <TextBox Grid.Column="1" Grid.Row="0" />
-                            <CheckBox Grid.Column="2" Grid.Row="0" />
-                        </Grid>
-                    </StackPanel>
+                    <ItemsRepeater ItemsSource="{Binding Lager}">
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Classes="lager-container">
+                                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
+                                        <TextBlock
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            Text="{Binding Key}" />
+                                        <TextBox
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Text="{Binding Value.Spalte.Name}" />
+                                        <CheckBox
+                                            Grid.Column="2"
+                                            Grid.Row="0"
+                                            IsChecked="{Binding Value.Enabled}" />
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
 
                 </StackPanel>
             </Grid>

@@ -22,12 +22,14 @@
                 <!--  Header  -->
                 <StackPanel Orientation="Vertical">
                     <Label Content="Spaltendarstellung im Hauptfester" />
-                    <TextBlock Text="Wählen Sie die Spalten aus die Sie im Hauptfenster einblenden möchen." TextWrapping="Wrap" />
+                    <Label Content="Wählen Sie die Spalten aus die Sie im Hauptfenster einblenden möchen." />
                 </StackPanel>
 
                 <!--  Spaltenansicht  -->
                 <StackPanel Margin="10" Orientation="Vertical">
-                    <ItemsRepeater ItemsSource="{Binding SettingsModel.Spalten}">
+                    <!--  Standardpalten  -->
+                    <Label Content="Standardspalten" />
+                    <ItemsRepeater ItemsSource="{Binding Spalten}">
                         <ItemsRepeater.Layout>
                             <WrapLayout Orientation="Horizontal" />
                         </ItemsRepeater.Layout>
@@ -43,8 +45,58 @@
                                             </Style>
                                         </StackPanel.Styles>
 
-                                        <CheckBox IsChecked="{Binding Enabled}" />
+                                        <CheckBox IsChecked="{Binding Enabled, Mode=TwoWay}" />
                                         <TextBlock Text="{Binding Name}" />
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
+                    <!--  Freifeldpalten  -->
+                    <Label Content="Freifeldspalten" />
+                    <ItemsRepeater ItemsSource="{Binding Freifelder}">
+                        <ItemsRepeater.Layout>
+                            <WrapLayout Orientation="Horizontal" />
+                        </ItemsRepeater.Layout>
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="1">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel.Styles>
+                                            <Style Selector="CheckBox, TextBlock">
+                                                <Setter Property="Margin" Value="0,0,20,0" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                            </Style>
+                                        </StackPanel.Styles>
+
+                                        <CheckBox IsChecked="{Binding Value.Spalte.Enabled, Mode=TwoWay}" />
+                                        <TextBlock Text="{Binding Value.Spalte.Name}" />
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
+                    <!--  Lagerspalten  -->
+                    <Label Content="Lagerspalten" />
+                    <ItemsRepeater ItemsSource="{Binding Lager}">
+                        <ItemsRepeater.Layout>
+                            <WrapLayout Orientation="Horizontal" />
+                        </ItemsRepeater.Layout>
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="1">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel.Styles>
+                                            <Style Selector="CheckBox, TextBlock">
+                                                <Setter Property="Margin" Value="0,0,20,0" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                            </Style>
+                                        </StackPanel.Styles>
+
+                                        <CheckBox IsChecked="{Binding Value.Spalte.Enabled, Mode=TwoWay}" />
+                                        <TextBlock Text="{Binding Value.Spalte.Name}" />
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
@@ -61,7 +113,7 @@
                         Content="Alles Auswählen/abwählen"
                         VerticalAlignment="Center"
                         VerticalContentAlignment="Center" />
-                    <CheckBox />
+                    <CheckBox IsChecked="{Binding AllesUmschalten, Mode=TwoWay}" />
                 </StackPanel>
             </StackPanel>
         </Border>

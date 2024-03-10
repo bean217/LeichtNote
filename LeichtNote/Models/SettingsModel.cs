@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using LeichtNote.Models.SettingsModels;
 using LeichtNote.Models.SettingsModels.SchwierigkeitsgradeModels;
 using LeichtNote.Models.SettingsModels.SpaltenansichtModels;
+using LeichtNote.Utils;
 using ReactiveUI;
 
 namespace LeichtNote.Models;
@@ -28,6 +29,10 @@ public class SettingsModel : ReactiveObject
     
     public IEnumerable<SpalteModel> Spalten { get; set; }
     public IEnumerable<SchwierigkeitsgradModel> Schwierigkeitsgrade { get; set; }
+    public IEnumerable<DictEntry<string?, FreifelderModel>> Freifelder { get; set; }
+    public IEnumerable<DictEntry<string?, LagerModel>> Lager { get; set; }
+    
+    public bool AllesSpaltenUmschalten { get; set; }
 
     #endregion
 
@@ -49,6 +54,24 @@ public class SettingsModel : ReactiveObject
             new SchwierigkeitsgradModel { Grad = 4, Beschreibung = "Schwer"},
             new SchwierigkeitsgradModel { Grad = 5, Beschreibung = "Sehr schwer"}
         };
+        
+        Freifelder = new List<DictEntry<string?, FreifelderModel>>()
+        {
+            new DictEntry<string?, FreifelderModel>("Freifelder 1", new FreifelderModel("T1")),
+            new DictEntry<string?, FreifelderModel>("Freifelder 2", new FreifelderModel("T2")),
+            new DictEntry<string?, FreifelderModel>("Freifelder 3", new FreifelderModel("T3")),
+            new DictEntry<string?, FreifelderModel>("Freifelder 4", new FreifelderModel("T4")),
+            new DictEntry<string?, FreifelderModel>("Freifelder 5", new FreifelderModel("T5"))
+        };
+        
+        Lager = new List<DictEntry<string?, LagerModel>>()
+        {
+            new DictEntry<string?, LagerModel>("Lager 1", new LagerModel("T1")),
+            new DictEntry<string?, LagerModel>("Lager 2", new LagerModel("T2")),
+            new DictEntry<string?, LagerModel>("Lager 3", new LagerModel("T3"))
+        };
+
+        AllesSpaltenUmschalten = false;
 
         #endregion
     }
