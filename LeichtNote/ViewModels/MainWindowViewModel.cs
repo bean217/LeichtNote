@@ -1,6 +1,10 @@
-﻿using System.Reactive.Linq;
+﻿using System;
+using System.IO;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia.ReactiveUI;
+using LeichtNote.Models;
 using LeichtNote.Views;
 using ReactiveUI;
 
@@ -12,6 +16,8 @@ public class MainWindowViewModel : ViewModelBase, IScreen
 
     public MenuBarViewModel MenuBarViewModel { get; }
     public MainViewModel MainViewModel { get; }
+    
+    public SettingsModel SettingsModel { get; set; }
 
     #endregion
     
@@ -26,9 +32,18 @@ public class MainWindowViewModel : ViewModelBase, IScreen
     {
         #region MainWindow Initialization
 
-        MenuBarViewModel = new MenuBarViewModel();
+        MenuBarViewModel = new MenuBarViewModel(this);
         MainViewModel = new MainViewModel(this);
 
+        // TODO: Load Settings Data on program startup
+        // SettingsModel = SettingsModel.LoadSettingsAsync().Result;
+        // Console.WriteLine(SettingsModel);
+        // Console.WriteLine(Directory.GetCurrentDirectory());
+        // foreach (var d in Directory.GetFiles(Directory.GetCurrentDirectory()))
+        // {
+        //     Console.WriteLine(d);
+        // }
+        
         #endregion
         
         #region Navigation Construction

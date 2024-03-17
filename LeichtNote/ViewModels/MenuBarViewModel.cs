@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Input;
 using System.Reactive.Linq;
 using Avalonia.Controls;
@@ -8,8 +9,11 @@ namespace LeichtNote.ViewModels;
 
 public class MenuBarViewModel : Control
 {
-    public MenuBarViewModel()
+    private MainWindowViewModel _mainWindowViewModel { get; set; }
+    public MenuBarViewModel(MainWindowViewModel mainWindowViewModel)
     {
+        _mainWindowViewModel = mainWindowViewModel;
+        
         #region Settings Dialog
 
         ShowSettingsDialogInteraction = new Interaction<SettingsWindowViewModel, SettingsModel?>();
@@ -18,6 +22,7 @@ public class MenuBarViewModel : Control
             var settings = new SettingsWindowViewModel();
         
             var result = await ShowSettingsDialogInteraction.Handle(settings);
+            Console.WriteLine(result);
         });
 
         #endregion
