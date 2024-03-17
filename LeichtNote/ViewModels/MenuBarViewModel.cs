@@ -25,6 +25,8 @@ public class MenuBarViewModel : Control
             if (result is not null)
             {
                 MainWindowViewModel.SettingsModel = result;
+                // save to disk
+                await MainWindowViewModel.SettingsModel.SaveAsync();
             }
         });
 
