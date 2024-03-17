@@ -35,9 +35,8 @@ public class MainWindowViewModel : ViewModelBase, IScreen
         MenuBarViewModel = new MenuBarViewModel(this);
         MainViewModel = new MainViewModel(this);
 
-        // TODO: Load Settings Data on program startup
-        // SettingsModel = SettingsModel.LoadSettingsAsync().Result;
-        // Console.WriteLine(SettingsModel);
+        // TODO: Create a loading screen and change this to async later
+        SettingsModel = SettingsModel.LoadSettings();
         // Console.WriteLine(Directory.GetCurrentDirectory());
         // foreach (var d in Directory.GetFiles(Directory.GetCurrentDirectory()))
         // {

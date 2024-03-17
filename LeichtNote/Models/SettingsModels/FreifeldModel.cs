@@ -1,15 +1,35 @@
+using System;
+
 namespace LeichtNote.Models.SettingsModels;
 
-public class FreifeldModel
+public class FreifeldModel : ICloneable
 {
     public string Name { get; set; }
     public bool Enabled { get; set; }
     public bool IsUsed { get; set; }
 
-    public FreifeldModel(string name = "", bool enabled = false, bool isUsed = false)
+    public FreifeldModel()
     {
-        Name = name;
-        Enabled = enabled;
-        IsUsed = isUsed;
+        Name = "";
+        Enabled = false;
+        IsUsed = false;
     }
+
+    #region ICloneable
+
+    public object Clone()
+    {
+        var clonedName = (string)Name.Clone();
+        var clonedEnabled = Enabled;
+        var clonedIsUsed = IsUsed;
+        var clonedFreifeld = new FreifeldModel()
+        {
+            Name = clonedName,
+            Enabled = clonedEnabled,
+            IsUsed = clonedIsUsed
+        };
+        return clonedFreifeld;
+    }
+
+    #endregion
 }

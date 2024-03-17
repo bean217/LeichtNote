@@ -9,20 +9,23 @@ namespace LeichtNote.ViewModels;
 
 public class MenuBarViewModel : Control
 {
-    private MainWindowViewModel _mainWindowViewModel { get; set; }
+    public MainWindowViewModel MainWindowViewModel { get; set; }
     public MenuBarViewModel(MainWindowViewModel mainWindowViewModel)
     {
-        _mainWindowViewModel = mainWindowViewModel;
+        MainWindowViewModel = mainWindowViewModel;
         
         #region Settings Dialog
 
         ShowSettingsDialogInteraction = new Interaction<SettingsWindowViewModel, SettingsModel?>();
         ShowSettingsDialogCommand = ReactiveCommand.CreateFromTask(async () =>
         {
-            var settings = new SettingsWindowViewModel();
+            var settings = new SettingsWindowViewModel((SettingsModel)MainWindowViewModel.SettingsModel.Clone());
         
             var result = await ShowSettingsDialogInteraction.Handle(settings);
-            Console.WriteLine(result);
+            if (result is not null)
+            {
+                MainWindowViewModel.SettingsModel = result;
+            }
         });
 
         #endregion

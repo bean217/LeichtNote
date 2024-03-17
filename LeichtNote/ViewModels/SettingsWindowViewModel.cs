@@ -103,11 +103,11 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
     
     #endregion
 
-    public SettingsWindowViewModel()
+    public SettingsWindowViewModel(SettingsModel? settingsModel = null)
     {
         #region SettingsWindow Initialization
 
-        SettingsModel = new SettingsModel();
+        SettingsModel = settingsModel ?? new SettingsModel();
 
         PersoenlicheAngebenViewModel = new PersoenlicheAngebenViewModel(SettingsModel);
         DatenimportViewModel = new DatenimportViewModel(SettingsModel);
