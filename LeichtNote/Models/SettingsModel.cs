@@ -9,6 +9,8 @@ using LeichtNote.Models.SettingsModels.SchwierigkeitsgradeModels;
 using LeichtNote.Models.SettingsModels.SpaltenansichtModels;
 using LeichtNote.Utils;
 using ReactiveUI;
+using SchwierigkeitsgradModel = LeichtNote.Models.SettingsModels.SchwierigkeitsgradModel;
+using SpalteModel = LeichtNote.Models.SettingsModels.SpalteModel;
 
 namespace LeichtNote.Models;
 
@@ -29,8 +31,8 @@ public class SettingsModel : ReactiveObject
     
     public IEnumerable<SpalteModel> Spalten { get; set; }
     public IEnumerable<SchwierigkeitsgradModel> Schwierigkeitsgrade { get; set; }
-    public IEnumerable<DictEntry<string?, FreifelderModel>> Freifelder { get; set; }
-    public IEnumerable<DictEntry<string?, LagerModel>> Lager { get; set; }
+    public IEnumerable<FreifeldModel> Freifelder { get; set; }
+    public IEnumerable<LagerModel> Lager { get; set; }
     
     public bool AllesSpaltenUmschalten { get; set; }
 
@@ -42,33 +44,33 @@ public class SettingsModel : ReactiveObject
         
         Spalten = new List<SpalteModel>()
         {
-            new SpalteModel { Name = "Test 1", Enabled = true },
-            new SpalteModel { Name = "Test 2", Enabled = false },
+            new SpalteModel("T1"),
+            new SpalteModel("T2"),
         };
 
         Schwierigkeitsgrade = new List<SchwierigkeitsgradModel>()
         {
-            new SchwierigkeitsgradModel { Grad = 1, Beschreibung = "Anfänger"},
-            new SchwierigkeitsgradModel { Grad = 2, Beschreibung = "Leicht"},
-            new SchwierigkeitsgradModel { Grad = 3, Beschreibung = "Mittel"},
-            new SchwierigkeitsgradModel { Grad = 4, Beschreibung = "Schwer"},
-            new SchwierigkeitsgradModel { Grad = 5, Beschreibung = "Sehr schwer"}
+            new SchwierigkeitsgradModel(grad: 1, beschreibung: "Anfänger"),
+            new SchwierigkeitsgradModel(grad: 2, beschreibung: "Leicht"),
+            new SchwierigkeitsgradModel(grad: 3, beschreibung: "Mittel"),
+            new SchwierigkeitsgradModel(grad: 4, beschreibung: "Schwer"),
+            new SchwierigkeitsgradModel(grad: 5, beschreibung: "Sehr schwer"),
         };
         
-        Freifelder = new List<DictEntry<string?, FreifelderModel>>()
+        Freifelder = new List<FreifeldModel>()
         {
-            new DictEntry<string?, FreifelderModel>("Freifelder 1", new FreifelderModel("T1")),
-            new DictEntry<string?, FreifelderModel>("Freifelder 2", new FreifelderModel("T2")),
-            new DictEntry<string?, FreifelderModel>("Freifelder 3", new FreifelderModel("T3")),
-            new DictEntry<string?, FreifelderModel>("Freifelder 4", new FreifelderModel("T4")),
-            new DictEntry<string?, FreifelderModel>("Freifelder 5", new FreifelderModel("T5"))
+            new FreifeldModel(name:"T1"),
+            new FreifeldModel(name:"T2"),
+            new FreifeldModel(name:"T3"),
+            new FreifeldModel(name:"T4"),
+            new FreifeldModel(name:"T5"),
         };
-        
-        Lager = new List<DictEntry<string?, LagerModel>>()
+
+        Lager = new List<LagerModel>()
         {
-            new DictEntry<string?, LagerModel>("Lager 1", new LagerModel("T1")),
-            new DictEntry<string?, LagerModel>("Lager 2", new LagerModel("T2")),
-            new DictEntry<string?, LagerModel>("Lager 3", new LagerModel("T3"))
+            new LagerModel(name: "T1"),
+            new LagerModel(name: "T2"),
+            new LagerModel(name: "T3"),
         };
 
         AllesSpaltenUmschalten = false;

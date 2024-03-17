@@ -24,16 +24,16 @@
                 <v:PersoenlicheAngebenView Background="LightGray" DataContext="{Binding PersoenlicheAngebenViewModel}" />
             </TabItem>
             <TabItem Header="Schwierigkeitsgrade">
-                <v:SchwierigkeitsgradeView Background="LightGray" DataContext="{Binding SchwierigkeitsgradeViewModel}" />
+                <v:SchwierigkeitsgradeView Background="LightGray" />
             </TabItem>
             <TabItem Header="Freifelder">
-                <v:FreifelderView Background="LightGray" DataContext="{Binding FreifelderViewModel}" />
+                <v:FreifelderView Background="LightGray" />
             </TabItem>
             <TabItem Header="Lager">
-                <v:LagerView Background="LightGray" DataContext="{Binding LagerViewModel}" />
+                <v:LagerView Background="LightGray" />
             </TabItem>
             <TabItem Header="Spaltenansicht">
-                <v:SpaltenansichtView Background="LightGray" DataContext="{Binding SpaltenansichtViewModel}" />
+                <v:SpaltenansichtView Background="LightGray" />
             </TabItem>
             <TabItem Header="Datenimport">
                 <v:DatenimportView Background="LightGray" DataContext="{Binding DatenimportViewModel}" />

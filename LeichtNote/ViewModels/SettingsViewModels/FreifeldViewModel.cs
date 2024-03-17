@@ -1,17 +1,13 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using LeichtNote.Models;
 using LeichtNote.Models.SettingsModels;
-using LeichtNote.Utils;
 
 namespace LeichtNote.ViewModels.SettingsViewModels;
 
-public class LagerViewModel : INotifyPropertyChanged
+public class FreifeldViewModel : INotifyPropertyChanged
 {
     #region Static Properties
     
-    private static int _totalLager = 0;
+    private static int _totalFreifeld = 0;
 
     #endregion
 
@@ -21,7 +17,7 @@ public class LagerViewModel : INotifyPropertyChanged
     public readonly int id;
 
     // string ID shown in Settings/Freifelder view
-    public string NameId => $"Lager {id}";
+    public string NameId => $"Freifeld {id}";
     
     #endregion
 
@@ -30,10 +26,10 @@ public class LagerViewModel : INotifyPropertyChanged
     // string indicating the Freifeld's set name
     public string Name
     {
-        get { return _lagerModel.Name; }
+        get { return _freifeldModel.Name; }
         set
         {
-            _lagerModel.Name = value;
+            _freifeldModel.Name = value;
             OnPropertyChanged(nameof(Name));
         }
     }
@@ -41,10 +37,10 @@ public class LagerViewModel : INotifyPropertyChanged
     // boolean indicating whether Freifeld is enabled in Spaltenansicht view
     public bool Enabled
     {
-        get { return _lagerModel.Enabled; }
+        get { return _freifeldModel.Enabled; }
         set
         {
-            _lagerModel.Enabled = value;
+            _freifeldModel.Enabled = value;
             OnPropertyChanged(nameof(Enabled));
             _settingsWindowViewModel.CheckSpaltenUpdate();
         }
@@ -53,15 +49,15 @@ public class LagerViewModel : INotifyPropertyChanged
     // boolean indicating whether Freifeld is shown/hidden in Spaltenansicht view
     public bool IsUsed
     {
-        get { return _lagerModel.IsUsed; }
+        get { return _freifeldModel.IsUsed; }
         set
         {
             if (value == false)
             {
                 // disable freifeld if it is no longer being used
-                _lagerModel.Enabled = value;
+                _freifeldModel.Enabled = value;
             }
-            _lagerModel.IsUsed = value;
+            _freifeldModel.IsUsed = value;
             OnPropertyChanged(nameof(IsUsed));
         }
     }
@@ -72,16 +68,16 @@ public class LagerViewModel : INotifyPropertyChanged
     
     #region Model
     
-    private LagerModel _lagerModel { get; set; }
+    private FreifeldModel _freifeldModel { get; set; }
     
     #endregion
     
-    public LagerViewModel(LagerModel lagerModel, SettingsWindowViewModel settingsWindowViewModel)
+    public FreifeldViewModel(FreifeldModel freifeldModel, SettingsWindowViewModel settingsWindowViewModel)
     {
-        _totalLager++;       // increment the total number of freifeld
-        id = _totalLager;    // assign unique ID to freifeld
+        _totalFreifeld++;       // increment the total number of freifeld
+        id = _totalFreifeld;    // assign unique ID to freifeld
 
-        _lagerModel = lagerModel;     // set underlying data model
+        _freifeldModel = freifeldModel;     // set underlying data model
         _settingsWindowViewModel = settingsWindowViewModel;
     }
     

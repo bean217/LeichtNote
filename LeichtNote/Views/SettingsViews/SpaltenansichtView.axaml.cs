@@ -6,7 +6,7 @@ using LeichtNote.ViewModels.SettingsViewModels;
 
 namespace LeichtNote.Views.SettingsViews;
 
-public partial class SpaltenansichtView : ReactiveUserControl<SpaltenansichtViewModel>
+public partial class SpaltenansichtView : UserControl
 {
     public SpaltenansichtView()
     {

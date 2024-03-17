@@ -3,11 +3,11 @@
     d:DesignWidth="1600"
     mc:Ignorable="d"
     x:Class="LeichtNote.Views.SettingsViews.FreifelderView"
-    x:DataType="vm:FreifelderViewModel"
+    x:DataType="vm:SettingsWindowViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="using:LeichtNote.ViewModels.SettingsViewModels"
+    xmlns:vm="using:LeichtNote.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <StackPanel Margin="100,0" VerticalAlignment="Center">
@@ -26,7 +26,7 @@
                     Grid.Column="1"
                     Grid.Row="0"
                     Margin="0,0,0,25"
-                    Text="{Binding Label}"
+                    Text="{Binding FreifelderLabel}"
                     TextWrapping="Wrap"
                     VerticalAlignment="Center" />
 
@@ -63,7 +63,7 @@
                         </Grid>
                     </StackPanel>
 
-                    <ItemsRepeater ItemsSource="{Binding Freifelder}">
+                    <ItemsRepeater ItemsSource="{Binding Freifelder, Mode=TwoWay}">
                         <ItemsRepeater.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Classes="freifelder-container">
@@ -71,15 +71,15 @@
                                         <TextBlock
                                             Grid.Column="0"
                                             Grid.Row="0"
-                                            Text="{Binding Key}" />
+                                            Text="{Binding NameId}" />
                                         <TextBox
                                             Grid.Column="1"
                                             Grid.Row="0"
-                                            Text="{Binding Value.Spalte.Name}" />
+                                            Text="{Binding Name, Mode=TwoWay}" />
                                         <CheckBox
                                             Grid.Column="2"
                                             Grid.Row="0"
-                                            IsChecked="{Binding Value.Enabled}" />
+                                            IsChecked="{Binding IsUsed, Mode=TwoWay}" />
                                     </Grid>
                                 </StackPanel>
                             </DataTemplate>
