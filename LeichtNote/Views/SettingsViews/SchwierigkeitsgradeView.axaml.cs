@@ -3,7 +3,6 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
-using LeichtNote.Models.SettingsModels.SchwierigkeitsgradeModels;
 using LeichtNote.ViewModels;
 using LeichtNote.ViewModels.SettingsViewModels;
 

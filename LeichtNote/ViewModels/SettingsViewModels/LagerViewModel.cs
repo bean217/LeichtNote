@@ -23,6 +23,8 @@ public class LagerViewModel : INotifyPropertyChanged
     // string ID shown in Settings/Freifelder view
     public string NameId => $"Lager {id}";
     
+    public string SpalteName => Name.Equals("") ? NameId : Name;
+    
     #endregion
 
     #region Model-Shared Properties
@@ -35,6 +37,7 @@ public class LagerViewModel : INotifyPropertyChanged
         {
             _lagerModel.Name = value;
             OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(SpalteName));
         }
     }
     

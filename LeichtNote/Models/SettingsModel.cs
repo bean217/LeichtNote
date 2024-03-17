@@ -5,8 +5,6 @@ using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 using LeichtNote.Models.SettingsModels;
-using LeichtNote.Models.SettingsModels.SchwierigkeitsgradeModels;
-using LeichtNote.Models.SettingsModels.SpaltenansichtModels;
 using LeichtNote.Utils;
 using ReactiveUI;
 using SchwierigkeitsgradModel = LeichtNote.Models.SettingsModels.SchwierigkeitsgradModel;

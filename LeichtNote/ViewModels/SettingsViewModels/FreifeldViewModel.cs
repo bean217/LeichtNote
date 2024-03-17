@@ -19,6 +19,8 @@ public class FreifeldViewModel : INotifyPropertyChanged
     // string ID shown in Settings/Freifelder view
     public string NameId => $"Freifeld {id}";
     
+    public string SpalteName => Name.Equals("") ? NameId : Name;
+    
     #endregion
 
     #region Model-Shared Properties
@@ -31,6 +33,7 @@ public class FreifeldViewModel : INotifyPropertyChanged
         {
             _freifeldModel.Name = value;
             OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(SpalteName));
         }
     }
     
