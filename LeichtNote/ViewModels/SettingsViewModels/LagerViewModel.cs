@@ -25,6 +25,8 @@ public class LagerViewModel : INotifyPropertyChanged
     
     public string SpalteName => Name.Equals("") ? NameId : Name;
     
+    public bool IsCheckBoxEnabled => !Name.Equals("");
+    
     #endregion
 
     #region Model-Shared Properties
@@ -38,6 +40,11 @@ public class LagerViewModel : INotifyPropertyChanged
             _lagerModel.Name = value;
             OnPropertyChanged(nameof(Name));
             OnPropertyChanged(nameof(SpalteName));
+            OnPropertyChanged(nameof(IsCheckBoxEnabled));
+            if (!IsCheckBoxEnabled)
+            {
+                IsUsed = false;
+            }
         }
     }
     

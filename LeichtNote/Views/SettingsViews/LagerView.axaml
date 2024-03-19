@@ -79,7 +79,8 @@
                                         <CheckBox
                                             Grid.Column="2"
                                             Grid.Row="0"
-                                            IsChecked="{Binding IsUsed, Mode=TwoWay}" />
+                                            IsChecked="{Binding IsUsed, Mode=TwoWay}"
+                                            IsEnabled="{Binding IsCheckBoxEnabled}" />
                                     </Grid>
                                 </StackPanel>
                             </DataTemplate>

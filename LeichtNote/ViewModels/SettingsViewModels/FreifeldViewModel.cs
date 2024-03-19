@@ -20,6 +20,8 @@ public class FreifeldViewModel : INotifyPropertyChanged
     public string NameId => $"Freifeld {id}";
     
     public string SpalteName => Name.Equals("") ? NameId : Name;
+
+    public bool IsCheckBoxEnabled => !Name.Equals("");
     
     #endregion
 
@@ -34,6 +36,11 @@ public class FreifeldViewModel : INotifyPropertyChanged
             _freifeldModel.Name = value;
             OnPropertyChanged(nameof(Name));
             OnPropertyChanged(nameof(SpalteName));
+            OnPropertyChanged(nameof(IsCheckBoxEnabled));
+            if (!IsCheckBoxEnabled)
+            {
+                IsUsed = false;
+            }
         }
     }
     
