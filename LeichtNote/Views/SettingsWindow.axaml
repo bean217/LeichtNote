@@ -20,8 +20,8 @@
 
     <Grid RowDefinitions="*,Auto">
         <TabControl TabStripPlacement="Left">
-            <TabItem Header="Persönliche Angeben">
-                <v:PersoenlicheAngebenView Background="LightGray" DataContext="{Binding PersoenlicheAngebenViewModel}" />
+            <TabItem Header="Persönliche Angaben">
+                <v:PersoenlicheAngabenView Background="LightGray" />
             </TabItem>
             <TabItem Header="Schwierigkeitsgrade">
                 <v:SchwierigkeitsgradeView Background="LightGray" />

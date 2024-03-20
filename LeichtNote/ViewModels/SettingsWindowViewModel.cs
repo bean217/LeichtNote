@@ -62,6 +62,8 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
     }
     public ObservableCollection<FreifeldViewModel> Freifelder { get; set; }
     public ObservableCollection<LagerViewModel> Lager { get; set; }
+    
+    public ObservableCollection<MandantViewModel> Mandanten { get; set; }
 
     public bool AllesSpaltenUmschalten
     {
@@ -91,7 +93,7 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
     
     #region SettingsWindow Child ViewModels
 
-    public PersoenlicheAngebenViewModel PersoenlicheAngebenViewModel { get; }
+    public PersoenlicheAngabenViewModel PersoenlicheAngabenViewModel { get; }
     public DatenimportViewModel DatenimportViewModel { get; }
 
     #endregion
@@ -109,12 +111,18 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
 
         SettingsModel = settingsModel ?? new SettingsModel();
 
-        PersoenlicheAngebenViewModel = new PersoenlicheAngebenViewModel(SettingsModel);
+        PersoenlicheAngabenViewModel = new PersoenlicheAngabenViewModel(SettingsModel);
         DatenimportViewModel = new DatenimportViewModel(SettingsModel);
 
         #endregion
         
         #region ViewModel Initialization
+
+        Mandanten = new ObservableCollection<MandantViewModel>();
+        foreach (var m in SettingsModel.Mandanten)
+        {
+            Mandanten.Add(new MandantViewModel(m));
+        }
         
         var schwierigkeiten = new List<SchwierigkeitsgradViewModel>();
         foreach (var skm in SettingsModel.Schwierigkeitsgrade)
@@ -145,6 +153,7 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
         }
 
         AllesSpaltenUmschalten = SettingsModel.AllesSpaltenUmschalten;
+        
         #endregion
         
         #region Settings Commands

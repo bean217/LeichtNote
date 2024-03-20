@@ -34,6 +34,18 @@ public class SettingsModel : ReactiveObject, ICloneable
     #region Settings Data
     
     [XmlIgnore]
+    public IEnumerable<MandantModel> Mandanten { get; set; }
+
+    [XmlElement]
+    [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+    public List<MandantModel> MandantenSurrogate
+    {
+        get { return Mandanten.ToList(); }
+        set { Mandanten = value; }
+    }
+    
+    
+    [XmlIgnore]
     public IEnumerable<SpalteModel> Spalten { get; set; }
 
     [XmlElement]
@@ -84,6 +96,18 @@ public class SettingsModel : ReactiveObject, ICloneable
     public SettingsModel()
     {
         #region Settings Data
+
+        Mandanten = new List<MandantModel>()
+        {
+            new MandantModel()
+            {
+                Name = "TestMandant1"
+            },
+            new MandantModel()
+            {
+                Name = "TestMandant2"
+            },
+        };
         
         Spalten = new List<SpalteModel>()
         {

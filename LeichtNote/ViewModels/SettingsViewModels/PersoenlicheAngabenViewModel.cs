@@ -2,10 +2,10 @@ using LeichtNote.Models;
 
 namespace LeichtNote.ViewModels.SettingsViewModels;
 
-public class PersoenlicheAngebenViewModel
+public class PersoenlicheAngabenViewModel
 {
     private SettingsModel SettingsModel { get; }
-    public PersoenlicheAngebenViewModel(SettingsModel settingsModel)
+    public PersoenlicheAngabenViewModel(SettingsModel settingsModel)
     {
         SettingsModel = settingsModel;
     }

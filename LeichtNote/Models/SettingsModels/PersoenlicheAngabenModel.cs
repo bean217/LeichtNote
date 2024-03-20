@@ -1,6 +1,6 @@
 namespace LeichtNote.Models.SettingsModels;
 
-public class PersoenlicheAngebenModel
+public class PersoenlicheAngabenModel
 {
     
 }
