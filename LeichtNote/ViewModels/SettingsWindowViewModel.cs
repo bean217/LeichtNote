@@ -29,7 +29,7 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
     "möchten.\nAußerdem können Sie die Bezeichnungen für Ihr " +
     "Lager eingeben.\n(z.B. Regal / Fach / Ordner /Schrank etc.)";
     
-    public string SchwierigkeitsgradeFooter => "Zum Bearbeiten \"Doppelklick\"";
+    public string EditFooter => "Zum Bearbeiten \"Doppelklick\"";
 
     #endregion
     
@@ -88,6 +88,16 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
             OnPropertyChanged(nameof(AllesSpaltenUmschalten));
         }
     }
+
+    public string Datenbankpfad
+    {
+        get { return SettingsModel.Datenbankpfad; }
+        set
+        {
+            SettingsModel.Datenbankpfad = value;
+            OnPropertyChanged(nameof(Datenbankpfad));
+        }
+    }
     
     #endregion
     
@@ -129,7 +139,7 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
         {
             schwierigkeiten.Add(new SchwierigkeitsgradViewModel(skm));
         }
-        Schwierigkeiten =
+        _schwierigkeiten =
             schwierigkeiten.Append(
                 new SchwierigkeitsgradViewModel(
                     new SchwierigkeitsgradModel(), 
@@ -153,6 +163,8 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
         }
 
         AllesSpaltenUmschalten = SettingsModel.AllesSpaltenUmschalten;
+
+        Datenbankpfad = SettingsModel.Datenbankpfad;
         
         #endregion
         

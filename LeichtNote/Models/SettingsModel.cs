@@ -90,6 +90,8 @@ public class SettingsModel : ReactiveObject, ICloneable
     }
     
     public bool AllesSpaltenUmschalten { get; set; }
+    
+    public string Datenbankpfad { get; set; }
 
     #endregion
 
@@ -147,6 +149,8 @@ public class SettingsModel : ReactiveObject, ICloneable
         };
 
         AllesSpaltenUmschalten = false;
+
+        Datenbankpfad = Directory.GetCurrentDirectory();
 
         #endregion
     }
