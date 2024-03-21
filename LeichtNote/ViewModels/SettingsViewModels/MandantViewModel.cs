@@ -43,6 +43,11 @@ public class MandantViewModel : INotifyPropertyChanged
     {
         _mandantModel = mandantModel;
     }
+
+    public MandantModel GetModel()
+    {
+        return _mandantModel;
+    }
     
     #region INotifyPropertyChanged Implementation
 

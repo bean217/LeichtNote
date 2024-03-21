@@ -109,6 +109,10 @@ public class SettingsModel : ReactiveObject, ICloneable
             {
                 Name = "TestMandant2"
             },
+            new MandantModel()
+            {
+                Name = "TestMandant3"
+            },
         };
         
         Spalten = new List<SpalteModel>()

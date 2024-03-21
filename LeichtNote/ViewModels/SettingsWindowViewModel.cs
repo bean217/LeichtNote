@@ -7,6 +7,7 @@ using System.Reactive.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Input;
 using DynamicData;
 using LeichtNote.Models;
 using LeichtNote.Models.SettingsModels;
@@ -17,7 +18,7 @@ namespace LeichtNote.ViewModels;
 
 public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
 {
-    #region ViewLabels
+    #region View Items
 
     public string FreifelderLabel =>
         "Hier können Sie fünf Felder beliebig frei definieren. " +
@@ -30,6 +31,22 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
     "Lager eingeben.\n(z.B. Regal / Fach / Ordner /Schrank etc.)";
     
     public string EditFooter => "Zum Bearbeiten \"Doppelklick\"";
+    
+    
+    private MandantViewModel? _focusedMandant { get; set; }
+
+    public MandantViewModel? FocusedMandant
+    {
+        get { return _focusedMandant; }
+        set
+        {
+            _focusedMandant = value;
+            OnPropertyChanged(nameof(FocusedMandant));
+            OnPropertyChanged(nameof(MandantFocused));
+        }
+    }
+
+    public bool MandantFocused => FocusedMandant != null;
 
     #endregion
     
@@ -40,6 +57,16 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
     #endregion
     
     #region Settings ViewModels
+    
+    public string Datenbankpfad
+    {
+        get { return SettingsModel.Datenbankpfad; }
+        set
+        {
+            SettingsModel.Datenbankpfad = value;
+            OnPropertyChanged(nameof(Datenbankpfad));
+        }
+    }
     
     public ObservableCollection<SpalteViewModel> Spalten { get; set; }
 
@@ -62,8 +89,18 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
     }
     public ObservableCollection<FreifeldViewModel> Freifelder { get; set; }
     public ObservableCollection<LagerViewModel> Lager { get; set; }
-    
-    public ObservableCollection<MandantViewModel> Mandanten { get; set; }
+
+    private ObservableCollection<MandantViewModel> _mandanten { get; set; }
+    public ObservableCollection<MandantViewModel> Mandanten
+    {
+        get { return _mandanten; }
+        set
+        {
+            _mandanten = value;
+            SettingsModel.Mandanten = _mandanten.Select(x => x.GetModel());
+            OnPropertyChanged(nameof(Mandanten));
+        }
+    }
 
     public bool AllesSpaltenUmschalten
     {
@@ -86,16 +123,6 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
                 s.Enabled = value;
             }
             OnPropertyChanged(nameof(AllesSpaltenUmschalten));
-        }
-    }
-
-    public string Datenbankpfad
-    {
-        get { return SettingsModel.Datenbankpfad; }
-        set
-        {
-            SettingsModel.Datenbankpfad = value;
-            OnPropertyChanged(nameof(Datenbankpfad));
         }
     }
     
@@ -126,12 +153,18 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
 
         #endregion
         
+        #region View Items
+
+        _focusedMandant = null;
+        
+        #endregion
+        
         #region ViewModel Initialization
 
-        Mandanten = new ObservableCollection<MandantViewModel>();
+        _mandanten = new ObservableCollection<MandantViewModel>();
         foreach (var m in SettingsModel.Mandanten)
         {
-            Mandanten.Add(new MandantViewModel(m));
+            _mandanten.Add(new MandantViewModel(m));
         }
         
         var schwierigkeiten = new List<SchwierigkeitsgradViewModel>();
@@ -179,10 +212,10 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
 
         #endregion
     }
+    
 
-
-
-
+    #region Schwierigkeitsgrade Event Handlers & Methods
+    
     public void HandleCellEditEnded(DataGridCellEditEndedEventArgs e)
     {
         // cell view data
@@ -268,7 +301,9 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
         return validRows.Concat(invalidRows).Concat(entryRow);
     }
 
+    #endregion
 
+    #region Spaltenansicht Event Handlers & Methods
 
     /// <summary>
     /// Checks whether AllesSpaltenUmschalten should be toggled based on the enabled states
@@ -291,7 +326,26 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
         }
     }
     
+    #endregion
 
+    #region PersoenlicheAngaben Event Handlers & Methods
+
+    public void HandleFocusMandant(MandantViewModel mvm)
+    {
+        FocusedMandant = mvm;
+    }
+    
+    public void HandleDeleteMandant()
+    {
+        if (FocusedMandant != null)
+        {
+            Mandanten.Remove(FocusedMandant);
+            SettingsModel.Mandanten = Mandanten.Select(x => x.GetModel());
+            FocusedMandant = null;
+        }
+    }
+
+    #endregion
 
     #region INotifyPropertyChanged Implementation
 

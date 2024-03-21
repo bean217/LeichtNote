@@ -46,22 +46,64 @@
                         BorderBrush="Black"
                         BorderThickness="1"
                         Grid.Column="0"
-                        Grid.Row="0">
+                        Grid.Row="0"
+                        Height="100"
+                        Padding="0,0,0,1">
 
-                        <ListBox ItemsSource="{Binding Mandanten}" SelectionMode="Single">
-                            <ListBox.Styles>
-                                <Style Selector="ListBoxItem">
-                                    <Setter Property="Height" Value="35" />
-                                    <Setter Property="Padding" Value="10,5" />
-                                    <Setter Property="VerticalContentAlignment" Value="Center" />
-                                </Style>
-                            </ListBox.Styles>
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Name}" />
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                        <!--  <ListBox  -->
+                        <!--  ItemsSource="{Binding Mandanten}"  -->
+                        <!--  SelectionChanged="SelectingItemsControl_OnSelectionChanged"  -->
+                        <!--  SelectionMode="Single">  -->
+                        <!--     <ListBox.Styles> -->
+                        <!--         <Style Selector="ListBoxItem"> -->
+                        <!--             <Setter Property="Height" Value="35" /> -->
+                        <!--             <Setter Property="Padding" Value="10,5" /> -->
+                        <!--             <Setter Property="VerticalContentAlignment" Value="Center" /> -->
+                        <!--         </Style> -->
+                        <!--     </ListBox.Styles> -->
+                        <!--     <ListBox.ItemTemplate> -->
+                        <!--         <DataTemplate> -->
+                        <!--             <TextBlock Text="{Binding Name}" /> -->
+                        <!--         </DataTemplate> -->
+                        <!--     </ListBox.ItemTemplate> -->
+                        <!-- </ListBox> -->
+                        <ScrollViewer AllowAutoHide="True">
+                            <StackPanel>
+                                <ItemsRepeater ItemsSource="{Binding Mandanten}">
+                                    <ItemsRepeater.Layout>
+                                        <StackLayout Orientation="Vertical" />
+                                    </ItemsRepeater.Layout>
+                                    <ItemsRepeater.Styles>
+                                        <Style Selector="StackPanel">
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </Style>
+                                        <Style Selector="StackPanel:pointerover">
+                                            <Setter Property="Background" Value="#fff0f0f0" />
+                                        </Style>
+                                        <Style Selector="StackPanel:focus">
+                                            <Setter Property="Background" Value="LightGray" />
+                                        </Style>
+                                    </ItemsRepeater.Styles>
+                                    <ItemsRepeater.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel
+                                                DoubleTapped="InputElement_OnDoubleTapped"
+                                                Focusable="True"
+                                                Margin="1,1,1,0"
+                                                PointerPressed="InputElement_OnPointerPressed">
+                                                <Border
+                                                    BorderBrush="LightGray"
+                                                    BorderThickness="1"
+                                                    Padding="5">
+                                                    <TextBlock Text="{Binding Name}" />
+                                                </Border>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsRepeater.ItemTemplate>
+                                </ItemsRepeater>
+                            </StackPanel>
+                        </ScrollViewer>
+
 
                     </Border>
 
@@ -73,7 +115,10 @@
                         VerticalAlignment="Top">
 
                         <Button Content="Neuen Mandanten Anlegen" />
-                        <Button Content="Mandanten Löschen" />
+                        <Button
+                            Click="DeleteMandant"
+                            Content="Mandanten Löschen"
+                            IsEnabled="{Binding MandantFocused}" />
                     </StackPanel>
 
                 </Grid>
@@ -86,9 +131,9 @@
 
                 <Grid ColumnDefinitions="6*,*,3*" Grid.Row="5">
                     <TextBox
-                        Focusable="False"
                         Grid.Column="0"
-                        Watermark="{Binding Datenbankpfad}" />
+                        IsReadOnly="True"
+                        Text="{Binding Datenbankpfad}" />
                     <StackPanel Grid.Column="2" VerticalAlignment="Center">
                         <Button Content="Durchsuchen" />
                     </StackPanel>
