@@ -114,7 +114,7 @@
                         Orientation="Vertical"
                         VerticalAlignment="Top">
 
-                        <Button Content="Neuen Mandanten Anlegen" />
+                        <Button Command="{Binding ShowNewMandantDialogCommand}" Content="Neuen Mandanten Anlegen" />
                         <Button
                             Click="DeleteMandant"
                             Content="Mandanten Löschen"

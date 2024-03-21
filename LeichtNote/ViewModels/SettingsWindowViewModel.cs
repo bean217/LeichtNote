@@ -6,11 +6,13 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Avalonia.Controls;
 using Avalonia.Input;
 using DynamicData;
 using LeichtNote.Models;
 using LeichtNote.Models.SettingsModels;
+using LeichtNote.ViewModels.DialogViewModels;
 using LeichtNote.ViewModels.SettingsViewModels;
 using ReactiveUI;
 
@@ -129,9 +131,8 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
     #endregion
     
     #region SettingsWindow Child ViewModels
-
-    public PersoenlicheAngabenViewModel PersoenlicheAngabenViewModel { get; }
-    public DatenimportViewModel DatenimportViewModel { get; }
+    
+    
 
     #endregion
 
@@ -147,9 +148,6 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
         #region SettingsWindow Initialization
 
         SettingsModel = settingsModel ?? new SettingsModel();
-
-        PersoenlicheAngabenViewModel = new PersoenlicheAngabenViewModel(SettingsModel);
-        DatenimportViewModel = new DatenimportViewModel(SettingsModel);
 
         #endregion
         
@@ -208,6 +206,43 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
         {
             await SettingsModel.SaveAsync();
             return SettingsModel;
+        });
+
+        #endregion
+        
+        #region Mandanten Dialog
+
+        ShowNewMandantDialogInteraction = new Interaction<InputDialogViewModel, string>();
+        ShowNewMandantDialogCommand = ReactiveCommand.CreateFromTask(async () =>
+        {
+            var inputDialogVM = new InputDialogViewModel(
+                label: "New Mandant Dialog Test Label", 
+                buttonText: "NMD_press",
+                initialInput: null,
+                validateInput: ValidateNewMandantName);
+            var result = await ShowNewMandantDialogInteraction.Handle(inputDialogVM);
+            HandleAddMandant(result);
+        });
+        
+        ShowEditMandantDialogInteraction = new Interaction<InputDialogViewModel, string>();
+        ShowEditMandantDialogCommand = ReactiveCommand.CreateFromTask(async () =>
+        {
+            var inputDialogVM = new InputDialogViewModel(
+                label: "Edit Mandant Dialog Test Label", 
+                buttonText: "EMD_press",
+                initialInput: FocusedMandant?.Name,
+                validateInput: ValidateEditMandantName);
+            var result = await ShowEditMandantDialogInteraction.Handle(inputDialogVM);
+            HandleEditMandant(result);
+
+        });
+        
+        ShowDeleteMandantDialogInteraction = new Interaction<ConfirmationDialogViewModel, MandantViewModel?>();
+        ShowDeleteMandantDialogCommand = ReactiveCommand.CreateFromTask(async () =>
+        {
+            var confirmationDialogVM = new ConfirmationDialogViewModel();
+            var result = await ShowDeleteMandantDialogInteraction.Handle(confirmationDialogVM);
+
         });
 
         #endregion
@@ -330,6 +365,8 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
 
     #region PersoenlicheAngaben Event Handlers & Methods
 
+    #region Handlers
+
     public void HandleFocusMandant(MandantViewModel mvm)
     {
         FocusedMandant = mvm;
@@ -344,6 +381,59 @@ public class SettingsWindowViewModel : ViewModelBase, INotifyPropertyChanged
             FocusedMandant = null;
         }
     }
+
+    public void HandleAddMandant(string name)
+    {
+        var m = new MandantModel()
+        {
+            Name = name
+        };
+        SettingsModel.Mandanten = SettingsModel.Mandanten.Append(m);
+        Mandanten.Add(new MandantViewModel(m));
+    }
+
+    public void HandleEditMandant(string newName)
+    {
+        if (FocusedMandant != null)
+        {
+            FocusedMandant.Name = newName;   
+        }
+
+        var x = FocusedMandant;
+    }
+
+    public bool ValidateNewMandantName(string input)
+    {
+        // check if the current input value is already taken
+        return !(input.Equals("") || Mandanten.Any(x => x.Name.Equals(input)));
+    }
+
+    public bool ValidateEditMandantName(string input)
+    {
+        // check if the current input value is already taken, except for the focused mandant
+        bool isValid = ValidateNewMandantName(input);
+        if (FocusedMandant != null)
+        {
+            isValid = isValid && !input.Equals(FocusedMandant.Name);
+        }
+        return isValid;
+    }
+
+    #endregion
+
+    #region Interactions
+
+    public Interaction<InputDialogViewModel, string> ShowNewMandantDialogInteraction { get; }
+    public ICommand ShowNewMandantDialogCommand { get; }
+    
+    public Interaction<InputDialogViewModel, string> ShowEditMandantDialogInteraction { get; }
+    public ICommand ShowEditMandantDialogCommand { get; }
+    
+    public Interaction<ConfirmationDialogViewModel, MandantViewModel?> ShowDeleteMandantDialogInteraction { get; }
+    public ICommand ShowDeleteMandantDialogCommand { get; }
+    
+    #endregion
+    
 
     #endregion
 
